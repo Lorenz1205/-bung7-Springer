@@ -48,8 +48,8 @@ int main(){
         int size =8;
         int x=0;
         int y=0;
-        int dx=[2,2,1,1,-1,-1,-2,-2]
-        int dy=[1,-1,2,-2,2,-2,1,-1]
+        int dx[]={2,2,1,1,-1,-1,-2,-2}
+        int dy[]={1,-1,2,-2,2,-2,1,-1}
         int movecount = 0;
         while movecount != size * size{
                 solveKnightTour(int x, int y, int moveCount, bool*visited, int size, int i);
