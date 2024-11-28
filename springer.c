@@ -31,7 +31,7 @@ bool	solveKnightTour(int x, int y, int moveCount, bool* visited, int size){
 			}
 		}
 	}
-	return (moveCount == (size * size));
+	return (moveCount == (size * size) ? true : false);
 }
 
 int main(){
@@ -39,8 +39,8 @@ int main(){
         int 	movecount;
 	bool	visited[size * size];
 
-	for (int x = 0; x < size; x++){
-		for (int y = 0; y < size; y++){
+	for (int x = 0; x <= size; x++){
+		for (int y = 0; y <= size; y++){
 			printf("Test:\n x: %d, y: %d == %d\n\n", x, y, \
 				solveKnightTour(x, y, movecount, visited, size));
 		}
