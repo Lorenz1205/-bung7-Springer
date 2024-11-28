@@ -17,7 +17,7 @@ int	solveKnightTourRecursive( int x, int y, int i, bool* visited, int dx[], int 
 	int	tmpx;
 	int	tmpy;
 
-	if ( i = size * size )
+	if ( i == size * size )
 		return (1);
 
 	for ( int j = 0; j < 8; j++ ){
@@ -25,7 +25,8 @@ int	solveKnightTourRecursive( int x, int y, int i, bool* visited, int dx[], int 
 		tmpy = y + dy[j];
 		if (isValid( tmpx, tmpy, visited, size)){
 			visited[toIndex(tmpx, tmpy, size)] = true;
-			if (solveKnightTourRecursive( tmpx, tmpy, i++, visited, dx, dy, size))
+			printf("tmpx: %d, tmpy: %d, i: %d\n\n", tmpx, tmpy, i);
+			if (solveKnightTourRecursive( tmpx, tmpy, i + 1, visited, dx, dy, size))
 				return (1);
 			else
 				visited[toIndex(tmpx, tmpy, size)] = false;
@@ -35,8 +36,8 @@ int	solveKnightTourRecursive( int x, int y, int i, bool* visited, int dx[], int 
 }
 
 bool	solveKnightTour(int x, int y, int moveCount, bool* visited, int size){
-        int dx[] = {-2,-2,-1,-1,1,1,2,2};
-        int dy[] = {1,-1,2,-2,2,-2,1,-1};
+        int dx[] = {2,  2, 1,  1, -1, -1, -2, -2};
+        int dy[] = {1, -1, 2, -2,  2, -2,  1, -1};
 
 	for (int i = 0; i < (size * size); i++)
 		visited[i] = false;
@@ -46,12 +47,12 @@ bool	solveKnightTour(int x, int y, int moveCount, bool* visited, int size){
 }
 
 int main(){
-        int 	size = 2;
+        int 	size = 8;
         int 	movecount;
 	bool	visited[size * size];
 
-	for (int x = 0; x <= size; x++){
-		for (int y = 0; y <= size; y++){
+	for (int x = 0; x < size; x++){
+		for (int y = 0; y < size; y++){
 			printf("Test:\n x: %d, y: %d == %d\n\n", x, y, \
 				solveKnightTour(x, y, movecount, visited, size));
 		}
