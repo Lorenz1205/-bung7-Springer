@@ -24,11 +24,11 @@ int isValid( int x, int y, bool* visited, int size){
                 }
 
         }
-bool solveKnightTour(int x, int y, int moveCount,bool*visited, int size, int i){
+bool solveKnightTour(int x, int y, int moveCount,bool*visited, int size,int i){
         if  moveCount != size * size{
-                        int nextx = dx[i]+x
-                        int nexty = dy[i]+y
-                        if isValid(int nextx, int nexty, bool* visited, int size)==1{
+                        int x = dx[i]+x
+                        int y = dy[i]+y
+                        if isValid(int x, int y, bool* visited, int size)==1{
                                 return x,y,movecount++,solveKnightTour(int x, int y, int MoveCount, bool*visited, int size, int i);
                                 else{
                                         for(i =1; i < 8; i++){
@@ -53,4 +53,5 @@ int main(){
         int movecount = 0;
         while movecount != size * size{
                 solveKnightTour(int x, int y, int moveCount, bool*visited, int size, int i);
-                                                                                                                                                                            1,18       Anfang
+                }
+        }
