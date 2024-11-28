@@ -13,6 +13,27 @@ int	isValid( int x, int y, bool* visited, int size){
 	return (visited[toIndex( x, y, size)] == false);
 }
 
+int	solveKnightTourRecursive( int x, int y, int i, bool* visited, int dx[], int dy[], int size){
+	int	tmpx;
+	int	tmpy;
+
+	if ( i = size * size )
+		return (1);
+
+	for ( int j = 0; j < 8; j++ ){
+		tmpx = x + dx[j];
+		tmpy = y + dy[j];
+		if (isValid( tmpx, tmpy, visited, size)){
+			visited[toIndex(tmpx, tmpy, size)] = true;
+			if (solveKnightTourRecursive( tmpx, tmpy, i++, visited, dx, dy, size))
+				return (1);
+			else
+				visited[toIndex(tmpx, tmpy, size)] = false;
+		}
+	}
+	return (0);
+}
+
 bool	solveKnightTour(int x, int y, int moveCount, bool* visited, int size){
         int dx[] = {-2,-2,-1,-1,1,1,2,2};
         int dy[] = {1,-1,2,-2,2,-2,1,-1};
@@ -21,22 +42,11 @@ bool	solveKnightTour(int x, int y, int moveCount, bool* visited, int size){
 		visited[i] = false;
 	moveCount = 0;
 	visited[toIndex(x, y, size)] = true;
-	for (int i = 0; i < (size * size); i++){
-		for (int j = 0; j < 8; j++){
-			if (isValid( x + dx[j], y + dy[j], visited, size)){
-				visited[toIndex(x, y, size)] = true;
-				moveCount++;
-				x += dx[j];
-				y += dy[j];
-				break;
-			}
-		}
-	}
-	return (moveCount == (size * size) ? true : false);
+	return (solveKnightTourRecursive( x, y, 1, visited, dx, dy, size));
 }
 
 int main(){
-        int 	size = 8;
+        int 	size = 2;
         int 	movecount;
 	bool	visited[size * size];
 
