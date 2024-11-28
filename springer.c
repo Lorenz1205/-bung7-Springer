@@ -10,16 +10,17 @@ int	toIndex(int x, int y, int size){
 int	isValid( int x, int y, bool* visited, int size){
         if (x < 0 || y < 0 || x >= size || y >= size)
                 return 0;
-	return (visited[toIndex( x, y, size)]);
+	return (visited[toIndex( x, y, size)] == false);
 }
 
 bool	solveKnightTour(int x, int y, int moveCount, bool* visited, int size){
-        int dx[] = {2,2,1,1,-1,-1,-2,-2};
+        int dx[] = {-2,-2,-1,-1,1,1,2,2};
         int dy[] = {1,-1,2,-2,2,-2,1,-1};
 
 	for (int i = 0; i < (size * size); i++)
 		visited[i] = false;
 	moveCount = 0;
+	visited[toIndex(x, y, size)] = true;
 	for (int i = 0; i < (size * size); i++){
 		for (int j = 0; j < 8; j++){
 			if (isValid( x + dx[j], y + dy[j], visited, size)){
